@@ -1,11 +1,14 @@
 【myvim】
 我的vim设置
-=====
+
+
+【安装】
+git clone git://github.com/tangfu/myvim.git
+cd myvim
+./install_myvim.sh
 
 
 【Change】
-=====
-
 snipmate:
 # switch 
 snippet sw
