@@ -1,0 +1,142 @@
+" =============================================================================
+"      FileName: .vimrc
+"          Desc: vim配置
+"        Author: tangfu
+"         Email: abctfq2008@gmail.com
+"      HomePage: http://rain.orgfree.com
+"       Version: 0.0.1
+"    LastChange: 2012-04-25 16:30:56
+" =============================================================================
+source ~/.myvim/pathogen.vim
+call pathogen#runtime_append_all_bundles()
+call pathogen#infect('~/.myvim')
+call pathogen#helptags()
+
+
+" 开启插件功能
+filetype plugin indent on
+set completeopt=longest,menu
+
+syntax on
+syntax enable
+set autoindent
+set number
+set mouse=a
+
+set tags=tags;
+set autochdir
+
+" fencview
+set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
+"let g:fencview_autodetect=1
+"let g:fencview_checklines = 10
+map <F7> :FencAutoDetect<cr>
+
+" doxygen setting
+let g:DoxygenToolkit_authorName="tangfu - abctangfuqiang2008@163.com"
+let g:DoxygenToolkit_licenseTag="UESTC\<enter>"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_briefTag_pre="@brief\t"
+let g:DoxygenToolkit_paramTag_pre="@param\t"
+let g:DoxygenToolkit_returnTag="@return\t"
+let g:DoxygenToolkit_maxFunctionProtoLines=30
+let g:doxygen_enhanced_color=1
+
+" authorinfo setting
+let g:vimrc_author='tangfu'
+let g:vimrc_email='abctfq2008@gmail.com'
+let g:vimrc_homepage="http://rain.orgfree.com"
+nmap <F6> :AuthorInfoDetect<cr>
+
+" DoxAuthor Dox DoxBlock三个命令的快捷操作
+map <F2>a : DoxAuthor<CR>
+map <F2>f : Dox<CR>
+map <F2>b : DoxBlock<CR>
+map <F2>c O///
+
+" Loadtemplate载入模板的快捷操作
+map lt :LoadTemplate<cr>
+
+" winmanager插件
+let g:winManagerWindowLayout='FileExplorer|TagList'
+nmap wm :WMToggle<cr>
+
+" Taglist插件
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplMapWindowNavVim=1
+
+" a.vim和grep.vim插件
+nnoremap <silent> <F12> :A<CR>
+nnoremap <silent> <F3> :Grep<CR>
+
+
+
+" plugin - NERD_commenter.vim	注释代码用的，
+" " [count],cc 光标以下count行逐行添加注释(7,cc)
+" " [count],cu 光标以下count行逐行取消注释(7,cu)
+" " [count],cm 光标以下count行尝试添加块注释(7,cm)
+" " ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
+" " 注：count参数可选，无则默认为选中行或当前行
+" "-----------------------------------------------------------------
+let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1   " 多行注释时样子更好看
+
+
+
+
+" superTab插件,由于要占用tab键因此先关闭
+" g:SuperTabRetainCompletionType=2
+" g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+
+" word_complete.vim自动加载补全模式（补全单词）
+" :autocmd BufEnter * call DoWordComplete() 
+
+" sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
+map <F4> :call ToggleSketch()<CR>
+
+" 不要用空格代替制表符
+set noexpandtab
+
+" 高亮显示匹配的括号
+set showmatch
+
+" 为C程序提供自动缩进
+set smartindent
+
+"突出显示当前行
+set cursorline
+
+
+
+" C的编译和运行
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+exec "w"
+exec "!gcc % -g -Wall -o %<"
+exec "! ./%<"
+endfunc
+
+
+" 能够漂亮地显示.NFO文件
+set encoding=utf-8
+function! SetFileEncodings(encodings)
+    let b:myfileencodingsbak=&fileencodings
+        let &fileencodings=a:encodings
+        endfunction
+        function! RestoreFileEncodings()
+            let &fileencodings=b:myfileencodingsbak
+                unlet b:myfileencodingsbak
+                 endfunction
+
+
+
+" 统一缩进为4
+set softtabstop=4
+set shiftwidth=4
+
+" 在处理未保存或只读文件的时候，弹出确认 
+set confirm

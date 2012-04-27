@@ -1,0 +1,16 @@
+myvim
+=====
+
+snipmate:
+# switch 
+snippet sw
+	switch {
+		case ${1:condition1}:
+			break;
+		default:
+			break;
+	}
+# case
+snippet case
+	case ${1:condition1}:
+		break;
