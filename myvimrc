@@ -3,9 +3,9 @@
 "          Desc: vim配置
 "        Author: tangfu
 "         Email: abctfq2008@gmail.com
-"      HomePage: http://rain.orgfree.com
+"      HomePage: https://github.com/tangfu/myvim
 "       Version: 0.0.1
-"    LastChange: 2012-04-25 16:30:56
+"    LastChange: 2012-04-27 13:38:19
 " =============================================================================
 source ~/.myvim/pathogen.vim
 call pathogen#runtime_append_all_bundles()

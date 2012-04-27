@@ -2,14 +2,16 @@
 
 function back_vim {
 	cd ~
-	temp=`ll .vimrc`
-	[ "1${temp}" = "1-" ] && mv .vimrc .vimrc_bak
+	temp=`ls -l .vimrc`
+	[ "1${temp:0:1}" = "1-" ] && mv .vimrc .vimrc_bak
 	[ -d .vim ] && mv .vim .vim_bak
 }
 
 function set_myvim {
 	cd $local
 	if [ -f myvimrc ];then 
+		rm -rf ~/.myvim
+		rm ~/.vimrc
 		ln -s $local ~/.myvim
 		ln -s $local/myvimrc ~/.vimrc
 	else
@@ -19,7 +21,8 @@ function set_myvim {
 }
 
 local=`pwd`
-if [ $local = "~/.myvim" ];then
+standard_dir=~/.myvim
+if [ $local = $standard_dir ];then
 	echo "不能在~/.myvim目录下进行安装\n"
 	exit 1
 fi
