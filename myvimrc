@@ -28,7 +28,10 @@ set tags=tags;
 set autochdir
 
 " fencview
-set fileencodings=utf-8,gb2312,ucs-bom,euc-cn,euc-tw,gb18030,gbk,cp936
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,gb2312,euc-cn,euc-tw,cp936,gb18030,latin1
 "let g:fencview_autodetect=1
 "let g:fencview_checklines = 10
 map <F7> :FencAutoDetect<cr>
@@ -66,8 +69,9 @@ nmap wm :WMToggle<cr>
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 
-" let g:miniBufExplMapCTabSwitchBufs=1
-" let g:miniBufExplMapWindowNavVim=1
+" TABBAR 插件
+let g:Tb_UseSingleClick = 1
+
 
 " a.vim和grep.vim插件
 nnoremap <silent> <F12> :A<CR>
