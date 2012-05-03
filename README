@@ -7,6 +7,16 @@ git clone git://github.com/tangfu/myvim.git
 cd myvim
 ./install_myvim.sh
 
+【键位映射】
+<F2>	doxygen插件开启
+<F3>	grep插件
+<F4>	画图插件
+<F5>	编译当前文件
+<F6>	插入作者信息
+<F7>	打开日历
+<F8>	zoomwin放大或者恢复当前窗口
+<F9>	生成tags
+
 
 【Change】
 
