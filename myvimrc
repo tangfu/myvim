@@ -31,13 +31,19 @@ set autochdir
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,gb2312,euc-cn,euc-tw,cp936,gb18030,latin1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "let g:fencview_autodetect=1
 "let g:fencview_checklines = 10
 map <F7> :FencAutoDetect<cr>
 
 " ZoomWin
 map <F8> :ZoomWin<cr>
+
+" wordpress
+let VIMPRESS=[{'blog_url':'http://rain.orgfree.com'
+	    \,'username':'tangfu',
+	    \}]
+
 
 " doxygen setting
 let g:DoxygenToolkit_authorName="tangfu - abctangfuqiang2008@163.com"
