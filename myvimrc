@@ -31,6 +31,9 @@ set mouse=a
 set tags=tags;
 set autochdir
 
+" pandoc
+map <leader>h :%!pandoc -f markdown -t html -s<CR>
+
 " fencview
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
