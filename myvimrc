@@ -12,6 +12,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#infect('~/.myvim')
 call pathogen#helptags()
 
+" project
+set nocompatible
+let g:proj_flags="gist"
 
 " 开启插件功能
 filetype plugin indent on
@@ -22,6 +25,7 @@ syntax enable
 set autoindent
 set number
 set mouse=a
+
 
 " 设置tags
 set tags=tags;
@@ -80,10 +84,11 @@ let Tlist_Exit_OnlyWindow=1
 
 " TABBAR 插件
 let g:Tb_UseSingleClick = 1
+map <F5> :bdelete<CR>
 
 
 " a.vim和grep.vim插件
-nnoremap <silent> <F12> :A<CR>
+nnoremap <silent> <F4> :A<CR>
 nnoremap <silent> <F3> :Grep<CR>
 
 " Calendar
@@ -104,7 +109,7 @@ let NERDCompactSexyComs=1   " 多行注释时样子更好看
 " :autocmd BufEnter * call DoWordComplete() 
 
 " sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
-map <F4> :call ToggleSketch()<CR>
+" map <F4> :call ToggleSketch()<CR>
 
 " 不要用空格代替制表符
 set noexpandtab
@@ -127,7 +132,7 @@ set confirm
 
 
 " C的编译和运行
-map <F5> :call CompileRunGcc()<CR>
+" map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     exec "!gcc % -g -Wall -o %<"

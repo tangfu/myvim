@@ -10,12 +10,13 @@ cd myvim
 【键位映射】
 <F2>	doxygen插件开启
 <F3>	grep插件
-<F4>	画图插件
-<F5>	编译当前文件
+<F4>	打开对应的头文件或源文件
+<F5>	删除当前buffer，在tabbar中相当于删除标签
 <F6>	插入作者信息
 <F7>	打开日历
 <F8>	zoomwin放大或者恢复当前窗口
 <F9>	生成tags
+<F12>	打开项目工程
 
 
 【Change】
