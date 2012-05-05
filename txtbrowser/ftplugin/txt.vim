@@ -50,6 +50,15 @@ let s:TBrowser_Config .= '--regex-txt="/^[ \t]+(figure[ \t]+[0-9a-zA-Z]+([.: ]([
 
 "Special process of Chinese(or CJK) tag.
 if (exists('Tlist_Enc_Patch') || has("unix"))
+        let s:TBrowser_Config .= '--regex-txt="/^([一二三四五六七八九十]+[.]?[ \t]+)(.+$)/\1\2/c,content/" '
+	let s:TBrowser_Config .= '--regex-txt="/^([一二三四五六七八九十]+、[ \t]*)(.+$)/\1\2/c,content/" '
+
+        let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(（[一二三四五六七八九十]+）[.]?[ \t]+)(.+$)/.   \1\2/c,content/" '
+        let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(（[一二三四五六七八九十]+）、[ \t]*)(.+$)/.   \1\2/c,content/" '
+
+	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(图[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/f,figures/i" '
+	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(表[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/t,tables/i" '
+
 	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(图[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/f,figures/i" '
 	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(表[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/t,tables/i" '
 

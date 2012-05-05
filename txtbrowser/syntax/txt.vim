@@ -40,8 +40,11 @@ syn match txtTitle "^\(\d\+\.\)\+\s*[^,。，]\+,"
 
 "txtTitle: Lines start with Chinese digit and '.'
 "标题文本: 汉字数字加'.、'打头，且该行不含,.。，标点符号
-syn match txtTitle "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+$"
-syn match txtTitle "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+,"
+syn match txtTitle "^\(\s*（\)*\([一二三四五六七八九十]\+）*[、. ]\)\+\s*[^,。，]\+$"
+syn match txtTitle "^\(\s*（\)*\([一二三四五六七八九十]\+[、. ]\)\+\s*[^,。，]\+[，,]"
+
+syn match txtTitle "^（\([一二三四五六七八九十]\+）*[、. ]\)\+\s*[^,。，]\+$"
+syn match txtTitle "^（\([一二三四五六七八九十]\+[、. ]\)\+\s*[^,。，]\+[，,]"
 
 "txtTitle: Lines start with digit
 "标题文本: 以数字打头, 中间有空格, 后跟任意文字. 且该行不含有,.。，标点符号
