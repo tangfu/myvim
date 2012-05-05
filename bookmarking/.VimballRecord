@@ -1,0 +1,1 @@
+bookmarking.vba: call delete('/home/tangfu/myvim/bookmarking//home/davidt/VimBookmarking/doc/bookmarking.txt')|call delete('/home/tangfu/myvim/bookmarking//home/davidt/VimBookmarking/plugin/bookmarking.vim')
