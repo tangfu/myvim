@@ -1,13 +1,16 @@
-【myvim】
+
+=================================================
+1. 【说明】
 我的vim设置
 
-
-【安装】
+=================================================
+2. 【安装】
 git clone git://github.com/tangfu/myvim.git
 cd myvim
 ./install_myvim.sh
 
-【键位映射】
+=================================================
+3. 【键位映射】
 <F2>	doxygen插件开启
 <F3>	grep插件
 <F4>	打开对应的头文件或源文件
@@ -18,16 +21,16 @@ cd myvim
 <F9>	生成tags
 <F12>	打开项目工程
 
+=================================================
+4. 【Change】
 
-【Change】
-
-tabbar:
+4.1 tabbar:
 # 修改映射
 原始映射：ESC + NUM
 修改后	：NUM(正常模式下)，ESC + NUM(插入模式下)
 
 
-snipmate:
+4.2 snipmate:
 # 添加switch 
 snippet sw
 	switch {
