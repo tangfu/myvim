@@ -34,6 +34,13 @@ set tags=tags;
 set autochdir
 
 
+" vimim
+let g:vimim_shuangpin='abc'
+let g:vimim_cloud='sogou'
+let g:vimim_toggle='sogou,pinyin'
+" let g:vimim_map='c-space'
+
+
 " txtbrowser
 au BufEnter *.txt setlocal ft=txt
 let TxtBrowser_Dict_Url = 'http://dict.cn/text'
