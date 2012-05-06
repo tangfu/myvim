@@ -34,14 +34,18 @@ let s:TBrowser_Config = ' --langdef=txt --langmap=txt:.txt '
 
 "Title tag definition
 let s:TBrowser_Config .= '--regex-txt="/^([0-9]+\.?[ \t]+)(.+$)/\1\2/c,content/" '
+let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(【[^,。，]+】)\s*$/\1/c,content/" '
 if (TxtBrowser_Title_Level >= 2)
 	let s:TBrowser_Config .= '--regex-txt="/^(([0-9]+\.){1}([0-9]+\.?)[ \t]+)(.+$)/.   \1\4/c,content/" '
+	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(【【[^,。，]+】】)\s*$/.    \1/c,content/" '
 endif
 if (TxtBrowser_Title_Level >= 3)
 	let s:TBrowser_Config .= '--regex-txt="/^(([0-9]+\.){2}([0-9]+\.?)[ \t]+)(.+$)/.       \1\4/c,content/" '
+	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(【【【[^,。，]+】】】)\s*$/.	    \1/c,content/" '
 endif
 if (TxtBrowser_Title_Level >= 4)
 	let s:TBrowser_Config .= '--regex-txt="/^(([0-9]+\.){3}([0-9]+\.?)[ \t]+)(.+$)/.           \1\4/c,content/" '
+	let s:TBrowser_Config .= '--regex-txt="/^[ \t]*(【【【【[^,。，]+】】】】)\s*$/.	    \1/c,content/" '
 endif
 
 "Table and Figure tag definition
