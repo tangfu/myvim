@@ -29,6 +29,10 @@ set number
 set mouse=a
 
 
+" 开启代码折叠
+set foldmethod=syntax
+set foldlevel=100
+
 " 设置tags
 set tags=tags;
 set autochdir

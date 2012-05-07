@@ -7,6 +7,8 @@
 2. 【安装】
 git clone git://github.com/tangfu/myvim.git
 cd myvim
+git submodule init
+git submodule update
 ./install_myvim.sh
 
 =================================================
