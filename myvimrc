@@ -64,7 +64,14 @@ let g:w3m#homepage = "http://www.google.com/"
 map <leader>h :%!pandoc -f markdown -t html -s<CR>
 let g:pandoc_auto_format = 1
 let g:pandoc_no_padding = 1
-" let b:pandoc_bibfiles = ['/home/tangfu/.bibfile']
+
+
+" 设置NERDTree插件
+nmap <F7> :NERDTreeToggle<CR>
+"设置NERDTree子窗口宽度
+let NERDTreeWinSize=20
+"设置NERDTree子窗口位置
+let NERDTreeWinPos="right"
 
 
 " bookmarking
@@ -80,7 +87,7 @@ language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "let g:fencview_autodetect=1
 "let g:fencview_checklines = 10
-map <F7> :FencAutoDetect<cr>
+map <F3> :FencAutoDetect<cr>
 
 
 " ZoomWin
@@ -140,11 +147,11 @@ map <F5> :bdelete<CR>
 
 " a.vim和grep.vim插件
 nnoremap <silent> <F4> :A<CR>
-nnoremap <silent> <F3> :Grep<CR>
+" nnoremap <silent> <F3> :Grep<CR>
 
 
 " Calendar
-map <F7> :Calendar<CR>
+map <leader>rl :Calendar<CR>
 
 " plugin - NERD_commenter.vim	注释代码用的，
 " " [count],cc 光标以下count行逐行添加注释(7,cc)
