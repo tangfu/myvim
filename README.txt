@@ -4,12 +4,17 @@
 我的vim设置
 
 =================================================
-2. 【安装】
+2. 【安装与卸载】
 git clone git://github.com/tangfu/myvim.git
 cd myvim
 git submodule init
 git submodule update
-./install_myvim.sh
+
+a) 安装
+./myvim.sh -i
+b) 卸载
+./myvim.sh -u
+
 
 =================================================
 3. 【键位映射】

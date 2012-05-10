@@ -11,7 +11,7 @@ function set_myvim {
 	cd $local
 	if [ -f myvimrc ];then 
 		rm -rf ~/.myvim
-		rm ~/.vimrc
+		rm -f ~/.vimrc
 		ln -s $local ~/.myvim
 		ln -s $local/myvimrc ~/.vimrc
 	else
@@ -20,11 +20,26 @@ function set_myvim {
 	fi
 }
 
+function unset_myvim {
+	cd ~
+	[ -f .vimrc_bak ] && mv .vimrc_bak .vimrc
+	[ -d .vim_bak ] && mv .vim_bak .vim
+}
+
 local=`pwd`
 standard_dir=~/.myvim
+option=$1
 if [ $local = $standard_dir ];then
 	echo "不能在~/.myvim目录下进行安装\n"
 	exit 1
 fi
-back_vim
-set_myvim
+
+if [ "o$option" = "o-i" ];then
+    back_vim
+    set_myvim
+elif [ "o$option" = "o-u" ];then    
+    unset_myvim
+else
+    echo "[USAGE] ./install_myvim.sh [-i|-u]"
+fi
+
