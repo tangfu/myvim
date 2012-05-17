@@ -45,6 +45,15 @@ let g:vimim_toggle='sogou,pinyin'
 " let g:vimim_map='c-space'
 
 
+" Tabular 设置对齐
+map ta :Tabular /
+
+" rst_table 设置表格
+" 必须先写数据再执行命令
+map ttc ,,c
+map ttf ,,f
+
+
 " txtbrowser
 au BufEnter *.txt setlocal ft=txt
 let TxtBrowser_Dict_Url = 'http://dict.cn/text'
