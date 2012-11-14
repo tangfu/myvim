@@ -13,11 +13,6 @@ call pathogen#infect('~/.myvim')
 call pathogen#helptags()
 
 
-" project
-set nocompatible
-let g:proj_flags="gist"
-
-
 " 开启插件功能
 filetype plugin indent on
 set completeopt=longest,menu
@@ -151,7 +146,7 @@ nmap wt :Tlist<cr>
 
 " TABBAR 插件
 let g:Tb_UseSingleClick = 1
-map <F5> :bdelete<CR>
+map <F12> :bdelete<CR>
 
 
 " a.vim和grep.vim插件
