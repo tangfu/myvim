@@ -84,7 +84,7 @@ let NERDTreeWinPos="right"
 
 
 " bookmarking
-map <silent> bb :ToggleBookmark<CR>
+map <silent> bt :ToggleBookmark<CR>
 map <silent> bn :NextBookmark<CR>
 map <silent> bp :PreviousBookmark<CR>
 
