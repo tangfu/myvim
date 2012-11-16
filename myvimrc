@@ -12,6 +12,7 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#infect('~/.myvim')
 call pathogen#helptags()
 
+set nocompatible
 
 " 开启插件功能
 filetype plugin indent on
