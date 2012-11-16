@@ -20,12 +20,12 @@ b) 卸载
 <F2>	doxygen插件开启
 <F3>	fencview自动使用合适的编码
 <F4>	打开对应的头文件或源文件
-<F5>	删除当前buffer，在tabbar中相当于删除标签
+<F5>	lookupfile
 <F6>	插入作者信息
 <F7>	打开NerdTree
 <F8>	zoomwin放大或者恢复当前窗口
 <F10>	创建和生成tags
-<F12>	打开项目工程
+<F12>	删除当前buffer，在tabbar中相当于删除标签
 
 其他组合键，请查看myvimrc文件
 =================================================
