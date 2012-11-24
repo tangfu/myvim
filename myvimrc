@@ -22,7 +22,7 @@ syntax on
 syntax enable
 set autoindent
 set number
-set mouse=a
+set mouse=
 
 
 " 开启代码折叠
