@@ -3,8 +3,8 @@
 function back_vim {
 	cd ${install_home}
 	temp=`ls -l .vimrc 2>/dev/null`
-	[ "1${temp:0:1}" = "1-" ] && mv .vimrc .vimrc_bak
-	[ -d .vim ] && mv .vim .vim_bak
+	[ "1${temp:0:1}" = "1-" ] && mv .vimrc .vimrc_original
+	[ -d .vim ] && mv .vim .vim_original
 }
 
 function set_myvim {
@@ -22,8 +22,8 @@ function set_myvim {
 
 function unset_myvim {
 	cd ${install_home}
-	[ -f .vimrc_bak ] && mv .vimrc_bak .vimrc
-	[ -d .vim_bak ] && mv .vim_bak .vim
+	[ -f .vimrc_original ] && mv .vimrc_original .vimrc
+	[ -d .vim_original ] && mv .vim_original .vim
 }
 
 ############################################main##############################################
