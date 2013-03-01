@@ -176,9 +176,6 @@ let NERDCompactSexyComs=1   " 多行注释时样子更好看
 " sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
 " map <F4> :call ToggleSketch()<CR>
 
-" 不要用空格代替制表符
-set noexpandtab
-
 " 高亮显示匹配的括号
 set showmatch
 
