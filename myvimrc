@@ -180,16 +180,18 @@ let NERDCompactSexyComs=1   " 多行注释时样子更好看
 set showmatch
 
 " 为C程序提供自动缩进
-set cindent shiftwidth=4
-set autoindent shiftwidth=4
-set smartindent shiftwidth=4
+set cindent 
+set autoindent
+set smartindent
 
 "突出显示当前行
 set cursorline
 
 " 统一缩进为4
+set expandtab
+set tabstop=4
 set softtabstop=4
-
+set shiftwidth=4
 
 " 在处理未保存或只读文件的时候，弹出确认 
 set confirm
