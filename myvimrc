@@ -60,9 +60,11 @@ map ts <leader>s
 map tf <leader>f
 map tg <leader>g
 
+
 " load_template
 let g:template_path = '~/template'
 map lt :LoadTemplate<cr>
+
 
 " w3m
 let g:w3m#search_engine = 'http://www.baidu.com/s?ie=' . &encoding . '&wd='
@@ -87,6 +89,11 @@ let NERDTreeWinPos="right"
 map <silent> bt :ToggleBookmark<CR>
 map <silent> bn :NextBookmark<CR>
 map <silent> bp :PreviousBookmark<CR>
+
+
+" vimshell(需要补齐的话需要再安装neocomplcache)
+" let g:neocomplcache_enable_at_startup = 1                                                                                                            
+nmap bs :VimShell<CR>
 
 
 " fencview
