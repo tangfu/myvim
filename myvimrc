@@ -60,6 +60,8 @@ map ts <leader>s
 map tf <leader>f
 map tg <leader>g
 
+" load_template
+let g:template_path = '~/template'
 
 " w3m
 let g:w3m#search_engine = 'http://www.baidu.com/s?ie=' . &encoding . '&wd='
