@@ -20,8 +20,9 @@ set completeopt=longest,menu
 
 syntax on
 syntax enable
-set number
+" set number
 set mouse=
+set noic
 
 " 设置backsapce                                                                                                                                         
 set backspace=indent,eol,start
