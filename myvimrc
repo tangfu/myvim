@@ -13,6 +13,8 @@ call pathogen#infect('~/.myvim')
 call pathogen#helptags()
 
 set nocompatible
+set autoread
+set nobomb
 
 " 开启插件功能
 filetype plugin indent on
