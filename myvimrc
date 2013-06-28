@@ -37,6 +37,8 @@ set foldlevel=100
 set tags=tags;
 set autochdir
 
+" 开启显示换行
+set wrap
 
 " vimim
 let g:vimim_shuangpin='abc'
