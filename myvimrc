@@ -152,10 +152,15 @@ nmap wm :WMToggle<cr>
 
 
 " Taglist插件
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-nmap wt :Tlist<cr>
+" let Tlist_Show_One_File=1
+" let Tlist_Exit_OnlyWindow=1
+" nmap wt :Tlist<cr>
 
+" TagBar插件
+let g:tagbar_sort = 0
+let g:tagbar_left = 1
+let g:tagbar_width = 25                                                                                                            
+nmap wt :TagbarToggle<cr>
 
 " TABBAR 插件
 let g:Tb_UseSingleClick = 1
