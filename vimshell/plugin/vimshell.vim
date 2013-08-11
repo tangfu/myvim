@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: vimshell.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 10 Feb 2013.
+" Last Modified: 10 Jun 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -43,17 +43,6 @@ endif
 
 let s:save_cpo = &cpo
 set cpo&vim
-
-if exists(':NeoBundleDepends') "{{{
-  NeoBundleDepends 'Shougo/vimproc', {
-        \ 'build' : {
-        \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-        \     'cygwin' : 'make -f make_cygwin.mak',
-        \     'mac' : 'make -f make_mac.mak',
-        \     'unix' : 'make -f make_unix.mak',
-        \    },
-        \ }
-endif"}}}
 
 " Obsolute options check. "{{{
 "}}}
@@ -111,6 +100,8 @@ let g:vimshell_scrollback_limit =
       \ get(g:, 'vimshell_scrollback_limit', 1000)
 let g:vimshell_enable_transient_user_prompt =
       \ get(g:, 'vimshell_enable_transient_user_prompt', 0)
+let g:vimshell_force_overwrite_statusline =
+      \ get(g:, 'vimshell_force_overwrite_statusline', 0)
 
 " For interactive commands.
 let g:vimshell_interactive_no_save_history_commands =

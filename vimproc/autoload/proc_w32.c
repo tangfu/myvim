@@ -526,8 +526,8 @@ vp_pipe_close(char *args)
     VP_RETURN_IF_FAIL(vp_stack_from_args(&stack, args));
     VP_RETURN_IF_FAIL(vp_stack_pop_num(&stack, "%d", &fd));
 
-    if (!CloseHandle((HANDLE)_get_osfhandle(fd)))
-        return vp_stack_return_error(&_result, "CloseHandle() error: %s",
+    if (_close(fd))
+        return vp_stack_return_error(&_result, "_close() error: %s",
                 lasterror());
     return NULL;
 }
@@ -964,8 +964,10 @@ vp_readdir(char *args)
     }
 
     do {
-        snprintf(buf, sizeof(buf), "%s/%s", dirname, fd.cFileName);
-        vp_stack_push_str(&_result, buf);
+        if (strcmp(fd.cFileName, ".") && strcmp(fd.cFileName, "..")) {
+            snprintf(buf, sizeof(buf), "%s/%s", dirname, fd.cFileName);
+            vp_stack_push_str(&_result, buf);
+        }
     } while (FindNextFile(h, &fd));
 
     FindClose(h);

@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: iexe.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 21 Jan 2013.
+" Last Modified: 29 Jul 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -24,8 +24,7 @@
 " }}}
 "=============================================================================
 
-let s:V = vital#of('vimshell')
-let s:BM = s:V.import('Vim.BufferManager')
+let s:BM = vimshell#util#get_vital().import('Vim.BufferManager')
 let s:manager = s:BM.new()  " creates new manager
 call s:manager.config('opener', 'silent edit')
 call s:manager.config('range', 'current')
@@ -125,7 +124,7 @@ function! s:command.execute(commands, context) "{{{
         \ '$TERMCAP' : 'COLUMNS=' . winwidth(0)-5,
         \ '$VIMSHELL' : 1,
         \ '$COLUMNS' : winwidth(0)-5,
-        \ '$LINES' : winheight(0),
+        \ '$LINES' : g:vimshell_scrollback_limit,
         \ '$VIMSHELL_TERM' : 'interactive',
         \ '$EDITOR' : vimshell#get_editor_name(),
         \ '$GIT_EDITOR' : vimshell#get_editor_name(),
@@ -157,7 +156,7 @@ function! s:command.execute(commands, context) "{{{
         \ 'echoback_linenr' : 0,
         \ 'prompt_nr' : line('.'),
         \ 'width' : winwidth(0),
-        \ 'height' : winheight(0),
+        \ 'height' : g:vimshell_scrollback_limit,
         \ 'stdout_cache' : '',
         \ 'stderr_cache' : '',
         \ 'command' : fnamemodify(use_cygpty ? args[1] : args[0], ':t:r'),
@@ -332,8 +331,6 @@ function! vimshell#commands#iexe#init(context, interactive, new_pos, old_pos, is
 
   " Set autocommands.
   augroup vimshell
-    autocmd InsertEnter <buffer>
-          \ call s:insert_enter()
     autocmd BufDelete,VimLeavePre <buffer>
           \ call vimshell#interactive#hang_up(expand('<afile>'))
     autocmd BufWinEnter,WinEnter <buffer>
@@ -352,13 +349,6 @@ function! vimshell#commands#iexe#init(context, interactive, new_pos, old_pos, is
   endif
 endfunction"}}}
 
-function! s:insert_enter() "{{{
-  if winwidth(0) != b:interactive.width ||
-        \ winheight(0) != b:interactive.height
-    " Set new window size.
-    call b:interactive.process.set_winsize(winwidth(0), winheight(0))
-  endif
-endfunction"}}}
 function! s:event_bufwin_enter() "{{{
   if has('conceal')
     setlocal conceallevel=3

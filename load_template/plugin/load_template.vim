@@ -61,6 +61,7 @@ function LoadTemplate(...) "{{{
 
 	"获取扩展名或者类型名{{{
 	let extension = expand ("%:e")
+	let file = expand ("%")
 	let ftype = &filetype
 
 	if type == "" && extension == "" && ftype == ""
@@ -71,9 +72,11 @@ function LoadTemplate(...) "{{{
 
 
 	let templateFileList = []
+	let templateOriginalFile = []
 
 	let t_path = g:template_path
 	if type == ""
+		call s:AddTemplateOriginalFile(templateOriginalFile,file,t_path,'*.'.extension)
 		call s:AddTemplateFile(templateFileList,t_path,'*.'.extension)
 		call s:AddTemplateFile(templateFileList,t_path,'*.'.ftype)
 		call s:AddTemplateFile(templateFileList,t_path,extension.g:vimrc_splitstr.'*')
@@ -88,6 +91,10 @@ function LoadTemplate(...) "{{{
 		return
 	endif
 
+	if len(templateOriginalFile) == 1
+		call s:LoadFile(templateOriginalFile[0])
+		return
+	endif
 	"如果就一个模板，就直接载入就行
 	if len(templateFileList) == 1
 		call s:LoadFile(templateFileList[0])
@@ -136,6 +143,22 @@ function s:AddTemplateFile(list,path,filter) "{{{
 		endif
 		if count(a:list, i) == 0
 			call add(a:list, i)
+		endif
+	endfor
+endfunction
+"}}}
+
+"加载完全匹配的文件
+function s:AddTemplateOriginalFile(list,file,path,filter) "{{{
+	let filesStr = globpath(a:path, a:filter)
+	let files = split(filesStr, "\n")
+	for i in files
+		if isdirectory(i) || !filereadable(i)
+			continue
+		endif
+		if a:file == i
+			call add(a:list, i)
+			return
 		endif
 	endfor
 endfunction

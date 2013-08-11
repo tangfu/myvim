@@ -35,7 +35,7 @@ set foldlevel=100
 
 " 设置tags
 set tags=tags;
-set autochdir
+" set autochdir
 
 " 开启显示换行
 set wrap
@@ -67,7 +67,7 @@ map tg <leader>g
 
 
 " load_template
-let g:template_path = '~/template'
+let g:template_path = '~/template/'
 map lt :LoadTemplate<cr>
 
 
@@ -204,7 +204,7 @@ set smartindent
 set cursorline
 
 " 统一缩进为4
-" set expandtab
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
