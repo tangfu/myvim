@@ -159,10 +159,12 @@ nmap wm :WMToggle<cr>
 " TagBar插件
 let g:tagbar_sort = 0
 let g:tagbar_left = 1
-let g:tagbar_width = 25                                                                                                            
+let g:tagbar_width = 25
+let g:tagbar_compact = 1
+let g:tagbar_foldlevel = 1
 nmap wt :TagbarToggle<cr>
 
-" TABBAR 插件
+" tabbar 插件
 let g:Tb_UseSingleClick = 1
 map <F12> :bdelete<CR>
 
