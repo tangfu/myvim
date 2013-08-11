@@ -116,9 +116,7 @@ map <F8> :ZoomWin<cr>
 
 
 " wordpress
-let VIMPRESS=[{'blog_url':'http://www.rainhome.org'
-	    \,'username':'tangfu',
-	    \}]
+" VIMPRESS的配置转移到~/.vimpressrc中了
 
 
 " doxygen setting
