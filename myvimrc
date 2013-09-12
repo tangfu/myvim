@@ -5,7 +5,7 @@
 "         Email: abctfq2008@gmail.com
 "      HomePage: https://github.com/tangfu/myvim
 "       Version: 0.1.0
-"    LastChange: 2013-05-06 13:28:30
+"    LastChange: 2013-09-12 13:28:30
 " =============================================================================
 source ~/.myvim/pathogen.vim
 call pathogen#runtime_append_all_bundles()
@@ -40,158 +40,6 @@ set tags=tags;
 " 开启显示换行
 set wrap
 
-" vimim
-let g:vimim_shuangpin='abc'
-let g:vimim_cloud='sogou'
-let g:vimim_toggle='sogou,pinyin'
-" let g:vimim_map='c-space'
-
-
-" Tabular 设置对齐
-map ta :Tabular /
-
-" rst_table 设置表格
-" 必须先写数据再执行命令
-map ttc ,,c
-map ttf ,,f
-
-
-" txtbrowser
-au BufEnter *.txt setlocal ft=txt
-let TxtBrowser_Dict_Url = 'http://dict.cn/text'
-let Txtbrowser_Search_Engine='http://www.baidu.com/s?wd=text&oq=text&f=3&rsp=2'
-" 重新映射txtbrowser中的快捷键：ts － 搜索单词；tf － 查单词；tg － 打开链接
-map ts <leader>s
-map tf <leader>f
-map tg <leader>g
-
-
-" load_template
-let g:template_path = '~/template/'
-map lt :LoadTemplate<cr>
-
-
-" w3m
-let g:w3m#search_engine = 'http://www.baidu.com/s?ie=' . &encoding . '&wd='
-let g:w3m#homepage = "http://www.google.com/"
-
-
-" vim-pandoc
-map <leader>h :%!pandoc -f markdown -t html -s<CR>
-let g:pandoc_auto_format = 1
-let g:pandoc_no_padding = 1
-
-
-" 设置NERDTree插件
-nmap <F7> :NERDTreeToggle<CR>
-"设置NERDTree子窗口宽度
-let NERDTreeWinSize=20
-"设置NERDTree子窗口位置
-let NERDTreeWinPos="right"
-
-
-" bookmarking
-map <silent> bt :ToggleBookmark<CR>
-map <silent> bn :NextBookmark<CR>
-map <silent> bp :PreviousBookmark<CR>
-
-
-" vimshell(需要补齐的话需要再安装neocomplcache)
-" let g:neocomplcache_enable_at_startup = 1                                                                                                            
-nmap bs :VimShell<CR>
-
-
-" fencview
-set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-"let g:fencview_autodetect=1
-"let g:fencview_checklines = 10
-map <F3> :FencAutoDetect<cr>
-
-
-" ZoomWin
-map <F8> :ZoomWin<cr>
-
-
-" wordpress
-" VIMPRESS的配置转移到~/.vimpressrc中了
-
-
-" doxygen setting
-let g:DoxygenToolkit_authorName="tangfu - 343385528@qq.com"
-let g:DoxygenToolkit_licenseTag="UESTC\<enter>"
-let g:DoxygenToolkit_briefTag_funcName="yes"
-let g:DoxygenToolkit_briefTag_pre="@brief\t"
-let g:DoxygenToolkit_paramTag_pre="@param\t"
-let g:DoxygenToolkit_returnTag="@return\t"
-let g:DoxygenToolkit_maxFunctionProtoLines=30
-let g:doxygen_enhanced_color=1
-
-
-" authorinfo setting
-let g:vimrc_author='tangfu'
-let g:vimrc_email='343385528@qq.com'
-let g:vimrc_homepage="http://www.rainhome.org"
-nmap <F6> :AuthorInfoDetect<cr>
-
-
-" DoxAuthor Dox DoxBlock三个命令的快捷操作
-map <F2>a : DoxAuthor<CR>
-map <F2>f : Dox<CR>
-map <F2>b : DoxBlock<CR>
-map <F2>c O///
-
-
-" winmanager插件
-let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr>
-
-
-" Taglist插件
-" let Tlist_Show_One_File=1
-" let Tlist_Exit_OnlyWindow=1
-" nmap wt :Tlist<cr>
-
-" TagBar插件
-let g:tagbar_sort = 0
-let g:tagbar_left = 1
-let g:tagbar_width = 25
-let g:tagbar_compact = 1
-let g:tagbar_foldlevel = 1
-nmap wt :TagbarToggle<cr>
-
-" tabbar 插件
-let g:Tb_UseSingleClick = 1
-map <F12> :bdelete<CR>
-
-
-" a.vim和grep.vim插件
-nnoremap <silent> <F4> :A<CR>
-" nnoremap <silent> <F3> :Grep<CR>
-
-
-" Calendar
-map <leader>rl :Calendar<CR>
-
-" plugin - NERD_commenter.vim	注释代码用的，
-" " [count],cc 光标以下count行逐行添加注释(7,cc)
-" " [count],cu 光标以下count行逐行取消注释(7,cu)
-" " [count],cm 光标以下count行尝试添加块注释(7,cm)
-" " ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
-" " 注：count参数可选，无则默认为选中行或当前行
-" "-----------------------------------------------------------------
-let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
-let NERDCompactSexyComs=1   " 多行注释时样子更好看
-
-
-" word_complete.vim自动加载补全模式（补全单词）
-" :autocmd BufEnter * call DoWordComplete() 
-
-" sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
-" map <F4> :call ToggleSketch()<CR>
-
 " 高亮显示匹配的括号
 set showmatch
 
@@ -212,22 +60,105 @@ set shiftwidth=4
 " 在处理未保存或只读文件的时候，弹出确认 
 set confirm
 
-" 删除除当前窗口外的所有缓存
-map <leader>bda :call DeleteAllBuffersInWindow()<cr>
-fun! DeleteAllBuffersInWindow()
-    let s:curWinNr = winnr()
-    if winbufnr(s:curWinNr) == 1
-        ret
-    endif
-    let s:curBufNr = bufnr("%")
-    exe "bn"
-    let s:nextBufNr = bufnr("%")
-    while s:nextBufNr != s:curBufNr
-        exe "bn"
-        exe "bdel ".s:nextBufNr
-        let s:nextBufNr = bufnr("%")
-    endwhile
-endfun
+
+
+" Tabular 设置对齐
+map ta :Tabular /
+
+" rst_table 设置表格
+" 必须先写数据再执行命令
+map ttc ,,c
+map ttf ,,f
+
+" txtbrowser
+au BufEnter *.txt setlocal ft=txt
+let TxtBrowser_Dict_Url = 'http://dict.cn/text'
+let Txtbrowser_Search_Engine='http://www.baidu.com/s?wd=text&oq=text&f=3&rsp=2'
+" 重新映射txtbrowser中的快捷键：ts － 搜索单词；tf － 查单词；tg － 打开链接
+map ts <leader>s
+map tf <leader>f
+map tg <leader>g
+
+" load_template
+let g:template_path = '~/template/'
+map lt :LoadTemplate<cr>
+
+" 设置NERDTree插件
+nmap <F7> :NERDTreeToggle<CR>
+"设置NERDTree子窗口宽度
+let NERDTreeWinSize=20
+"设置NERDTree子窗口位置
+let NERDTreeWinPos="right"
+
+" bookmarking
+map <silent> bt :ToggleBookmark<CR>
+map <silent> bn :NextBookmark<CR>
+map <silent> bp :PreviousBookmark<CR>
+
+" fencview
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"let g:fencview_autodetect=1
+"let g:fencview_checklines = 10
+map <F3> :FencAutoDetect<cr>
+
+" ZoomWin
+map <F8> :ZoomWin<cr>
+
+" doxygen setting
+let g:DoxygenToolkit_authorName="tangfu - 343385528@qq.com"
+let g:DoxygenToolkit_licenseTag="UESTC\<enter>"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_briefTag_pre="@brief\t"
+let g:DoxygenToolkit_paramTag_pre="@param\t"
+let g:DoxygenToolkit_returnTag="@return\t"
+let g:DoxygenToolkit_maxFunctionProtoLines=30
+let g:doxygen_enhanced_color=1
+
+" authorinfo setting
+let g:vimrc_author='tangfu'
+let g:vimrc_email='343385528@qq.com'
+let g:vimrc_homepage="http://www.rainhome.org"
+nmap <F6> :AuthorInfoDetect<cr>
+
+" DoxAuthor Dox DoxBlock三个命令的快捷操作
+map <F2>a : DoxAuthor<CR>
+map <F2>f : Dox<CR>
+map <F2>b : DoxBlock<CR>
+map <F2>c O///
+
+" Taglist插件
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+nmap wm :Tlist<cr>
+
+" TagBar插件
+let g:tagbar_sort = 0
+let g:tagbar_left = 1
+let g:tagbar_width = 25
+let g:tagbar_compact = 1
+let g:tagbar_foldlevel = 1
+nmap wt :TagbarToggle<cr>
+
+" tabbar 插件
+let g:Tb_UseSingleClick = 1
+map <F12> :bdelete<CR>
+
+" a.vim
+nnoremap <silent> <F4> :A<CR>
+
+" plugin - NERD_commenter.vim	注释代码用的，
+" " [count],cc 光标以下count行逐行添加注释(7,cc)
+" " [count],cu 光标以下count行逐行取消注释(7,cu)
+" " [count],cm 光标以下count行尝试添加块注释(7,cm)
+" " ,cA 在行尾插入 /* */,并且进入插入模式。 这个命令方便写注释。
+" " 注：count参数可选，无则默认为选中行或当前行
+" "-----------------------------------------------------------------
+let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1   " 多行注释时样子更好看
+
 
 " F10创建和更新tags
 map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>

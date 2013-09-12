@@ -1,0 +1,43 @@
+
+" w3m
+let g:w3m#search_engine = 'http://www.baidu.com/s?ie=' . &encoding . '&wd='
+let g:w3m#homepage = "http://www.google.com/"
+
+" vimim
+let g:vimim_shuangpin='abc'
+let g:vimim_cloud='sogou'
+let g:vimim_toggle='sogou,pinyin'
+" let g:vimim_map='c-space'
+
+" vim-pandoc
+map <leader>h :%!pandoc -f markdown -t html -s<CR>
+let g:pandoc_auto_format = 1
+let g:pandoc_no_padding = 1
+
+" vimshell(需要补齐的话需要再安装neocomplcache)
+" let g:neocomplcache_enable_at_startup = 1                                                                                                            
+nmap bs :VimShell<CR>
+
+" wordpress
+" VIMPRESS的配置转移到~/.vimpressrc中了
+
+" sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
+" map <F4> :call ToggleSketch()<CR>
+
+
+" 删除除当前窗口外的所有缓存
+map <leader>bda :call DeleteAllBuffersInWindow()<cr>
+fun! DeleteAllBuffersInWindow()
+    let s:curWinNr = winnr()
+    if winbufnr(s:curWinNr) == 1
+        ret
+    endif
+    let s:curBufNr = bufnr("%")
+    exe "bn"
+    let s:nextBufNr = bufnr("%")
+    while s:nextBufNr != s:curBufNr
+        exe "bn"
+        exe "bdel ".s:nextBufNr
+        let s:nextBufNr = bufnr("%")
+    endwhile
+endfun
