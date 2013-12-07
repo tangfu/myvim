@@ -1,3 +1,11 @@
+" indentLine 
+let g:indentLine_color_term = 210
+let g:indentLine_fileType = ['c', 'cpp']
+let g:indentLine_char = '娄'
+
+" gundo
+noremap <F5> :GundoToggle<CR>
+
 
 " w3m
 let g:w3m#search_engine = 'http://www.baidu.com/s?ie=' . &encoding . '&wd='
@@ -14,18 +22,18 @@ map <leader>h :%!pandoc -f markdown -t html -s<CR>
 let g:pandoc_auto_format = 1
 let g:pandoc_no_padding = 1
 
-" vimshell(需要补齐的话需要再安装neocomplcache)
+" vimshell(??要?????幕???要?侔?装neocomplcache)
 " let g:neocomplcache_enable_at_startup = 1                                                                                                            
 nmap bs :VimShell<CR>
 
 " wordpress
-" VIMPRESS的配置转移到~/.vimpressrc中了
+" VIMPRESS??????转?频?~/.vimpressrc????
 
-" sketch插件，开启后在vim中可以用鼠标绘图，再次按F4关闭
+" sketch??????????????vim?锌???????????图???俅伟?F4?乇?
 " map <F4> :call ToggleSketch()<CR>
 
 
-" 删除除当前窗口外的所有缓存
+" 删??????前???????????谢???
 map <leader>bda :call DeleteAllBuffersInWindow()<cr>
 fun! DeleteAllBuffersInWindow()
     let s:curWinNr = winnr()

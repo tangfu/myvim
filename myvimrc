@@ -70,6 +70,9 @@ map ta :Tabular /
 map ttc ,,c
 map ttf ,,f
 
+" 高亮注释
+highlight Comment ctermfg=6
+
 " txtbrowser
 au BufEnter *.txt setlocal ft=txt
 let TxtBrowser_Dict_Url = 'http://dict.cn/text'
