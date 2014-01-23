@@ -1,0 +1,3 @@
+# vim-ragel
+This is a plugin to use [ragel's](http://www.complang.org/ragel/) syntax
+highlighting file for vim. Files will need to end in *.rl*.
