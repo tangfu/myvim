@@ -26,6 +26,11 @@ syntax enable
 set mouse=
 set noic
 
+" 设置颜色模板
+let g:molokai_original=1
+set t_Co=256
+colorscheme molokai
+
 " 设置backsapce                                                                                                                                         
 set backspace=indent,eol,start
 
@@ -42,6 +47,9 @@ set wrap
 
 " 高亮显示匹配的括号
 set showmatch
+
+" 高亮搜索词
+set hlsearch
 
 " 为C程序提供自动缩进
 set cindent 
@@ -69,9 +77,6 @@ map ta :Tabular /
 " 必须先写数据再执行命令
 map ttc ,,c
 map ttf ,,f
-
-" 高亮注释
-highlight Comment ctermfg=6
 
 " txtbrowser
 au BufEnter *.txt setlocal ft=txt
