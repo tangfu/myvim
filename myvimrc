@@ -29,6 +29,7 @@ set noic
 " 设置颜色模板
 let g:molokai_original=1
 set t_Co=256
+set t_ut=
 colorscheme molokai
 
 " 设置backsapce                                                                                                                                         
