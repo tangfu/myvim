@@ -104,6 +104,9 @@ map <silent> bt :ToggleBookmark<CR>
 map <silent> bn :NextBookmark<CR>
 map <silent> bp :PreviousBookmark<CR>
 
+" 清除行尾空格
+nmap bc :%s/ *$//g<cr>:nohl<cr>
+
 " fencview
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
