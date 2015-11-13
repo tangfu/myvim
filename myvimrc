@@ -7,12 +7,12 @@
 "       Version: 0.1.0
 "    LastChange: 2013-09-12 13:28:30
 " =============================================================================
+set nocompatible
 source ~/.myvim/pathogen.vim
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect('~/.myvim')
 call pathogen#helptags()
 
-set nocompatible
 set autoread
 set nobomb
 
@@ -70,7 +70,6 @@ set shiftwidth=4
 set confirm
 
 
-
 " Tabular 设置对齐
 map ta :Tabular /
 
@@ -91,6 +90,11 @@ map tg <leader>g
 " load_template
 let g:template_path = '~/template/'
 map lt :LoadTemplate<cr>
+
+" neocomplete                                                                                                                       
+let g:acp_enableAtStartup = 0                                                                                                       
+let g:neocomplete#enable_at_startup = 1                                                                                             
+let g:neocomplete#enable_smart_case = 1
 
 " 设置NERDTree插件
 nmap <F7> :NERDTreeToggle<CR>
