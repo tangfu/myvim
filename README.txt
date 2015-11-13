@@ -14,6 +14,8 @@ a) 安装
 b) 卸载
 ./myvim.sh -u
 
+注：检查是否支持某些特性，vim --version
+./configure --prefix=$INSTALL_DIR --enable-pythoninterp=yes --enable-luainterp --with-features=huge --with-python-config-dir=/usr/lib64/python2.6/config
 
 =================================================
 3. 【键位映射】
