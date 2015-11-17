@@ -1,0 +1,236 @@
+*multiedit.txt*	 Multi-editing for Vim			*multiedit*
+
+Author: Henrik Lissner <henrik at lissner.net>
+License: MIT license
+
+CONTENTS						*multiedit-contents*
+
+Introduction        |multiedit-introduction|
+Mappings	    |multiedit-mappings|
+Settings	    |multiedit-settings|
+Known Issues	    |multiedit-issues|
+Changelog           |multiedit-changelog|
+
+==============================================================================
+INTRODUCTION						*multiedit-introduction*
+
+Do you envy Sublime Text 2's multiple selection and editing feature? This plugin
+tries to fill that multi-caret shaped gap in your heart by letting you
+specify "regions" of text and edit them all from one place.
+
+NOTE: This plugin was inspired by https://github.com/felixr/vim-multiedit, by
+Felix Riedel <felix.riedel at gmail.com>.
+
+==============================================================================
+MAPPINGS						*multiedit-mappings*
+>
+    " Insert a disposable marker after the cursor
+    nmap <leader>ma :MultieditAddMark a<CR>
+
+    " Insert a disposable marker before the cursor
+    nmap <leader>mi :MultieditAddMark i<CR>
+
+    " Make a new line and insert a marker
+    nmap <leader>mo o<Esc>:MultieditAddMark i<CR>
+    nmap <leader>mO O<Esc>:MultieditAddMark i<CR>
+
+    " Insert a marker at the end/start of a line
+    nmap <leader>mA $:MultieditAddMark a<CR>
+    nmap <leader>mI ^:MultieditAddMark i<CR>
+
+    " Make the current selection/word an edit region
+    vmap <leader>m :MultieditAddRegion<CR>  
+    nmap <leader>mm viw:MultieditAddRegion<CR>
+
+    " Restore the regions from a previous edit session
+    nmap <leader>mu :MultieditRestore<CR>
+
+    " Move cursor between regions n times
+    map ]m :MultieditHop 1<CR>
+    map [m :MultieditHop -1<CR>
+
+    " Start editing!
+    nmap <leader>M :Multiedit<CR>
+
+    " Clear the word and start editing
+    nmap <leader>C :Multiedit!<CR>
+
+    " Unset the region under the cursor
+    nmap <silent> <leader>md :MultieditClear<CR>
+
+    " Unset all regions
+    nmap <silent> <leader>mr :MultieditReset<CR>
+<
+Here are some keybinds that aren't included in the plugin but may be
+useful/interesting to some people:
+>
+    " Make the word under the cursor a region and jump to the next/previous
+    " occurance of that word
+    nmap <silent> <leader>mn <leader>mm/<C-r>=expand("<cword>")<CR><CR>
+    nmap <silent> <leader>mp <leader>mm?<C-r>=expand("<cword>")<CR><CR>
+<
+ 
+==============================================================================
+SETTINGS						*multiedit-settings*
+>
+    " Disable all mappings?
+    let g:multiedit_no_mappings = 0
+
+    " Reset all regions on InsertLeave when finished?
+    let g:multiedit_auto_reset = 1
+
+    " Disposable marker character (beware characters with strlen > 1 - like
+    " special symbols).
+    let g:multiedit_mark_character = '|'
+
+    " If no selections are present and you initiate edit mode, should it
+    " restore the previous regions?
+    let g:multiedit_auto_restore = 1
+<
+
+The highlight regions can be customized, these are the defaults:
+>
+    hi default link MultieditRegions Search
+    hi default link MultieditFirstRegion IncSearch
+<
+If other plugins cause odd behaviour during multiple region editing, two
+function scan be used to disable/re-enable this behaviour at apprpriate
+times. An example showing how to disable NeoComplete during multiple
+region editing is below:
+
+    function! Multiple_cursors_before()
+      exe 'NeoCompleteLock'
+      echo 'Disabled autocomplete'
+    endfunction
+
+    function! Multiple_cursors_after()
+      exe 'NeoCompleteUnlock'
+      echo 'Enabled autocomplete'
+    endfunction
+
+==============================================================================
+KNOWN ISSUES						*multiedit-issues*
+
+A few problems exist in this plugin, some that may be addressed in the future
+and some that won't.
+
+1. Multiediting aren't truly like multiple cursors, they can't account for
+   newlines or deleting past the starting point of the main region. (This
+   won't be addressed. Macros can easily make up for this. Heck, with mastery
+   of macros, this entire plugin could be replaced!)
+2. g:multiedit_mark_character cannot be a unicode/special character with
+   a strlen > 1. This may be addressed in a future updated, but is low
+   priority.
+3. It won't make you coffee. This is unacceptable! A THOUSAND YEARS DUNGEON!
+
+If you encounter any other issues, please report them at 
+https://github.com/hlissner/vim-multiedit/issues
+
+Thank you!
+
+==============================================================================
+CHANGELOG						*multiedit-changelog*
+
+2014-11-13 [2.0.3]
+- New: added conditional calls to Multiple_cursors_after/Multiple_cursors_before 
+  functions defined in your ~/.vimrc. These functions allow disabling of 
+  NeoComplete while editing multiple regions, for example. Implemenation copied
+  from terryma/vim-multiple-cursors issue #51
+2013-03-28 [2.0.2]
+- Fix: when the region goes crazy when the text is at the start of the line (when
+  len == 0 it would suddenly expand to the length of the line).
+- Fix: when the cursor deletes past its boundaries it will leave multiedit
+  mode and reset your regions.
+
+2013-03-26 [2.0.1]
+- New: four new keybinds for adding markers to the start/end of a line or on
+  the next/previous line
+- Changed: auto-removing disposable markers where entering insert mode (had
+  a strange effect when regions were at the start of a line)
+
+2013-03-25 [2.0.0]
+- New: jump between regions with ]m and [m
+- Changed: disposable marker will be automatically deleted when entering
+  insert mode
+- Changed: :MultieditAppendMark and :MultieditPrependMark are merged into
+  :MultieditAddMark [ia]
+- Changed: the default highlight color for MultieditRegion is now linked to
+   Search' hl group
+- Changed: in visual mode, <leader>mm is not <leader>m (it is still <leader>mm
+  in normal mode)
+- Removed: <leader>ms (sets the region under the cursor to the new
+  'main' region). <leader>mm and <leader>m will do so implicitly if
+  a pre-existing region is detected under the cursor
+- Removed: <leader>mn and <leader>mp - however, instructions on how to
+  restore this functionality can be found in |multiedit-settings|
+- Fixed: cursor position after editing
+- Fixed: old regions weren't saved and couldn't be restored (would throw an
+  error)
+- Fixed: when deleting the main region, the (automatically) assigned new main
+  region wasn't chosen based on the order in which they were set
+- Fixed: errors caused by overlap detection when deleting regions
+- General code clean up and refactoring across the board
+
+2013-03-11 [1.1.3]
+- Add :MultieditRestore to restore previous regions (if available). Uses
+  <leader>mu
+- Add g:multiedit_auto_restore to control :MultieditRestore being called when
+  edit mode is initiated without regions specified.
+
+2013-03-11 [1.1.2]
+- Change :Multiedit! functionality to delete word before editing (like
+  [C]hange command). Use <leader>C to initiate this mode.
+- Remove <leader>mw - now <leader>mm does it's job 
+  (viw:MultieditAddRegion<CR>)
+
+2013-03-11 [1.1.1]
+- Add :Multiedit! - will move insert caret to the start of the word, instead
+  of the end. Kep map for this is <leader>I
+- Fix automatically adding next/prev occurrence when using :MultieditNextMatch
+  and :MultieditPreviousMatch
+
+2013-03-10 [1.1.0]
+- Fix :MultieditClear "Key not present" bug
+- Fix bug with editing consecutive regions on the same line
+- Fix region reordering issue caused by clearing individual regions
+- Refactor multiedit#update() completely
+- Add :MultieditSet and <leader>ms - allowing you to change the "editable"
+  region.
+
+2013-03-07 [1.0.0]
+- Implement next/previous match functionality (like CMD+D in ST2)
+- Fix :MultieditAddRegion not accepting ranges
+
+2013-03-06
+- Move functions to autoload/multiedit.vim
+- Remove synchronized editing (caused more problems than helped)
+- Highlights keep up with edits
+- Remove mouse mappings
+- Replace <Plug>s with :commands, see plugin/multiedit.vim
+- Add "abort" keymaps that will disengage edit mode (and insert mode) if
+  pressed. These are <CR>, <Up>, <Down> - which the plugin can't take into
+  account.
+- Fix bugs with regions on the same line
+
+2013-03-03
+- New marker system enables you to place disposable markers
+- Change setting variable name convention
+  - Remove g:multedit_auto_update
+  - Add g:multiedit_mark_character
+  - Add <C-LeftMouse> mouse map
+- Highlight first selection differently (though colors need changing)
+- Add clear() and addMatch()
+- General code cleanup
+
+2013-02-23
+- Auto-reset on InsertLeave by default (can be disabled)
+- Auto-update can be disabled
+- Add INSERT, APPEND and CHANGE triggers
+- Change default keymaps
+- Fix g:multiedit_nomappings setting
+
+2012-07-01
+- First experimental version
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:

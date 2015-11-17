@@ -32,7 +32,7 @@ set t_Co=256
 set t_ut=
 colorscheme molokai
 
-" 设置backsapce                                                                                                                                         
+" 设置backsapce
 set backspace=indent,eol,start
 
 " 开启代码折叠
@@ -53,7 +53,7 @@ set showmatch
 set hlsearch
 
 " 为C程序提供自动缩进
-set cindent 
+set cindent
 set autoindent
 set smartindent
 
@@ -66,9 +66,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" 在处理未保存或只读文件的时候，弹出确认 
+" 在处理未保存或只读文件的时候，弹出确认
 set confirm
 
+" set paste
+set pastetoggle=<F5>
 
 " Tabular 设置对齐
 map ta :Tabular /
@@ -91,10 +93,36 @@ map tg <leader>g
 let g:template_path = '~/template/'
 map lt :LoadTemplate<cr>
 
-" neocomplete                                                                                                                       
-let g:acp_enableAtStartup = 0                                                                                                       
-let g:neocomplete#enable_at_startup = 1                                                                                             
+" neocomplete
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#max_list = 10
+
+" indent_line
+let g:indentLine_enabled = 0
+map <Leader>l :IndentLinesToggle<CR>
+" let g:indentLine_first_char =  '¦'
+let g:indentLine_char = '¦'
+let g:indentLine_fileType = ['c', 'h', 'hpp', 'cpp', 'py', 'sh']
+
+" easymotion
+let g:EasyMotion_smartcase = 1
+map ,h <Plug>(easymotion-linebackward)
+map ,j <Plug>(easymotion-j)
+map ,k <Plug>(easymotion-k)
+map ,l <Plug>(easymotion-lineforward)
+map ,f <Plug>(easymotion-f)
+map ,F <Plug>(easymotion-F)
+map ,/ <Plug>(easymotion-sn)
+omap ,/ <Plug>(easymotion-tn)
+
+" multi_edit
+let g:multiedit_auto_reset = 1
+let g:multiedit_auto_restore = 1
+
 
 " 设置NERDTree插件
 nmap <F7> :NERDTreeToggle<CR>

@@ -97,6 +97,6 @@ nnoremap <silent> <Plug>MoveLineUp    :call <SID>MoveLineUp()<CR>
 if g:move_map_keys
     vmap <C-j> <Plug>MoveBlockDown
     vmap <C-k> <Plug>MoveBlockUp
-    nmap <A-j> <Plug>MoveLineDown
-    nmap <A-k> <Plug>MoveLineUp
+    nmap <C-h> <Plug>MoveLineDown
+    nmap <C-l> <Plug>MoveLineUp
 endif
